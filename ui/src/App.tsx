@@ -1,5 +1,6 @@
 import { Alert, Box, Button, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import ClientApi from "./api";
 import MainWrapper from "./components/layout/main-layout.component";
 import { validateInput } from "./utils/validate-input";
 
@@ -7,8 +8,9 @@ const App: React.FC = (): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
   const [isFetching, setIsFetching] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useState(null);
 
-  const handleSubmit = (): void => {
+  const handleSubmit = async (): Promise<void> => {
     setIsFetching(true);
     const errors = validateInput(inputValue);
     if (errors.length) {
@@ -16,7 +18,8 @@ const App: React.FC = (): JSX.Element => {
       return setErrors(errors);
     }
     setErrors([]);
-    //Do api call
+    const userInfo = await ClientApi.user.get.byEmail(inputValue);
+    setUserInfo(userInfo);
     setIsFetching(false);
   };
 
@@ -30,14 +33,6 @@ const App: React.FC = (): JSX.Element => {
       handleSubmit();
     }
   };
-
-  useEffect(() => {
-    // const res = fetch(
-    //   "https://api.hubapi.com/contacts/v1/contact/email/testingapis@hubspot.com/profile?hapikey=demo"
-    // )
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
-  }, []);
 
   return (
     <MainWrapper>
