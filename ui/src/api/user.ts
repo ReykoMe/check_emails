@@ -4,7 +4,7 @@ import { config } from "../config/config";
 const getUserInfoByEmail = async (email: string) => {
   const { data } = await axios({
     baseURL: config.baseURL,
-    url: "/getUserInfo/getInfoByEmail",
+    url: "/getUserInfo/byEmail",
     params: {
       email,
     },

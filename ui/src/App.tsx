@@ -1,11 +1,14 @@
-import { Alert, Box, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, Dialog, Drawer, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import ReactJson from "react-json-view";
 import ClientApi from "./api";
 import MainWrapper from "./components/layout/main-layout.component";
 import { validateInput } from "./utils/validate-input";
 
 const App: React.FC = (): JSX.Element => {
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>(
+    "testingapis@hubspot.com"
+  );
   const [errors, setErrors] = useState<string[]>([]);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState(null);
@@ -36,6 +39,9 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <MainWrapper>
+      <Dialog open={Boolean(userInfo)} PaperProps={{ sx: { padding: 1 } }}>
+        {userInfo && <ReactJson src={userInfo} />}
+      </Dialog>
       <Box
         sx={{
           display: "flex",
