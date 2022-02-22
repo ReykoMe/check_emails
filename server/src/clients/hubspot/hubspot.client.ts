@@ -9,8 +9,7 @@ HubspotClient.interceptors.request.use((config) => {
   return { ...config, params: { ...config.params, hapikey: "demo" } };
 });
 
-// FIXME: type for hubspot response (too much)
-export const getUserByEmail = (email: string): AxiosPromise<any> => {
+export const getUserByEmail = (email: string): AxiosPromise => {
   return HubspotClient({
     method: "get",
     url: `/contacts/v1/contact/email/${email}/profile`,

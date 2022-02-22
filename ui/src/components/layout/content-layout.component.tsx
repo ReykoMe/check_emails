@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import React from "react";
 
-const ContentLayout: React.FC = (props): JSX.Element => {
+export const ContentLayout: React.FC = (props): JSX.Element => {
   const { children } = props;
   return (
     <Container maxWidth="xl" sx={{ height: "100%" }}>
@@ -10,4 +10,3 @@ const ContentLayout: React.FC = (props): JSX.Element => {
   );
 };
 
-export default ContentLayout;

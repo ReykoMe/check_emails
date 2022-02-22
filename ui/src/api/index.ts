@@ -1,7 +1,5 @@
 import { user } from "./user";
 
-const ClientApi = {
+export const ClientApi = {
   user,
 };
-
-export default ClientApi;
