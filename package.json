@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build:all": "cd ./server && npm run build && cd ../ui && npm run build && cd ..",
+    "all": "docker-compose up",
+    "install": "cd ./server && npm i && cd ../ui && npm i && cd .."
+  }
+}
