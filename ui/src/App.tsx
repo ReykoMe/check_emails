@@ -53,7 +53,7 @@ const App: React.FC = (): JSX.Element => {
           flexDirection: "column",
         }}
       >
-        <Form isFetching={isFetching} onSubmit={handleSubmit} />
+        <Form disableSubmitButton={isFetching} onSubmit={handleSubmit} />
         {Boolean(errors.length) && (
           <Box sx={{ width: "30%", mt: 2 }}>
             <Alert severity="error">

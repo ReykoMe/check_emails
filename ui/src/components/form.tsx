@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 
 type FormProps = {
-  isFetching: boolean;
+  disableSubmitButton: boolean;
   onSubmit: (value: string) => void;
 };
 
 export const Form: React.FC<FormProps> = (props): JSX.Element => {
   // PROPS
-  const { onSubmit, isFetching } = props;
+  const { onSubmit, disableSubmitButton } = props;
 
   // STATES
   const [inputValue, setInputValue] = useState<string>(
@@ -61,7 +61,7 @@ export const Form: React.FC<FormProps> = (props): JSX.Element => {
         sx={{ px: 5 }}
         variant="contained"
         onClick={handleSubmit}
-        disabled={isFetching}
+        disabled={disableSubmitButton}
       >
         Submit
       </Button>
